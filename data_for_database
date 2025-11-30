@@ -1,0 +1,283 @@
+INSERT INTO course_layout (course_code, course_name, min_students, max_students, hp) VALUES
+('IV1351', 'Data Storage Paradigms', 50, 250, '7.5'),
+('IX1500', 'Discrete Mathematics', 50, 150, '7.5'),
+('CSE101','Intro to Computer Science',10,200,'7.5'),
+('MAT201','Calculus I',5,150,'6'),
+('PHY150','Physics Basics',5,120,'6'),
+('HIS100','Modern History',8,100,'5'),
+('ENG110','English Writing',6,80,'5');
+
+INSERT INTO department (department_id, department_name) VALUES
+(1,'Computer Science'),
+(2,'Mathematics'),
+(3,'Physics'),
+(4,'Humanities');
+
+INSERT INTO job_title (job_id, job_title) VALUES
+(1,'Lecturer'),
+(2,'Senior Lecturer'),
+(3,'Professor'),
+(4,'Administrator'),
+(5,'Teaching Assistant');
+
+INSERT INTO manager (manager_id) VALUES 
+(1),(2),(3);
+
+INSERT INTO person (person_id, personal_number, first_name, last_name, address) VALUES
+(1,'19900101A001','Alice','Andersson','Storgatan 1, 111 11 Stockholm'),
+(2,'19910502B002','Bjorn','Berg','Lilla Vägen 2, 222 22 Gothenburg'),
+(3,'19881212C003','Carla','Carlsson','Övre Gatan 3, 333 33 Malmö'),
+(4,'19930707D004','David','Dahl','Nedre Platsen 4, 444 44 Uppsala'),
+(5,'19921010E005','Emma','Eriksson','Södra Vägen 5, 555 55 Lund'),
+(6,'19940420F006','Fred','Fransson','Norra Stråket 6, 666 66 Linköping'),
+(7,'19870601G007','Greta','Gustavsson','Stilla Torg 7, 777 77 Örebro'),
+(8,'19960202H008','Henrik','Holm','Parkgatan 8, 888 88 Västerås'),
+(9,'19910909I009','Ida','Ivarsson','Kvarteret 9, 999 99 Karlstad'),
+(10,'19921111J010','Johan','Johansson','Bergsbacken 10, 101 01 Borås'),
+(11,'19930130K011','Karin','Karlsson','Stigen 11, 111 02 Helsingborg'),
+(12,'19950912L012','Lars','Lind','Havsvägen 12, 121 21 Norrköping');
+
+INSERT INTO phone (phone_no, person_id) VALUES
+('+46-70-1110001',1),
+('+46-70-1110002',1),
+('+46-70-1110003',2),
+('+46-70-1110004',3),
+('+46-70-1110005',4),
+('+46-70-1110006',5),
+('+46-70-1110007',6),
+('+46-70-1110008',7),
+('+46-70-1110009',8),
+('+46-70-1110010',9),
+('+46-70-1110011',10),
+('+46-70-1110012',11),
+('+46-70-1110013',12);
+
+INSERT INTO teaching_activity (teaching_activity_id, activity_name, factor) VALUES
+(1,'Lecture', '3.6'),
+(2,'Lab', '2.4'),
+(3,'Tutorial', '2.4'),
+(4,'Seminar', '1.8'),
+(5,'Other', '1.0'),
+(6,'Examination', '1.0'),
+(7,'Administration', '1.0');
+
+INSERT INTO course_instance (course_instance_id, num_students, study_period, study_year, course_code) VALUES
+('2025-50273', 200, 'P2', '2025', 'IV1351'),
+
+('2025-50413', 150, 'P1', '2025', 'IX1500'),
+
+('2026-40378',50,'P1','2025','CSE101'),
+('2025-38474',40,'P1','2025','MAT201'),
+('2025-48567',30,'P1','2025','PHY150'),
+
+('2025-50236', 200, 'P2', '2025', 'IV1351'),
+('2025-50229', 156, 'P3', '2025', 'IV1351'),
+('2025-50201', 135, 'P1', '2025', 'IV1351'),
+('2025-50442', 124, 'P2', '2025', 'IX1500'),
+('2025-50420', 129, 'P3', '2025', 'IX1500'),
+('2025-50431', 135, 'P4', '2025', 'IX1500');
+
+INSERT INTO department_manager (department_id, manager_id) VALUES
+(1,1),
+(2,2),
+(3,3);
+
+INSERT INTO employee (employee_id, employment_id, salary, person_id, department_id, job_title_id) VALUES
+(1,'EMP001','45000',1,1,1),
+(2,'EMP002','47000',2,1,2),
+(3,'EMP003','52000',3,1,3),
+(4,'EMP004','36000',4,2,1),
+(5,'EMP005','38000',5,2,5),
+(6,'EMP006','41000',6,3,1),
+(7,'EMP007','43000',7,3,2),
+(8,'EMP008','48000',8,3,3),
+(9,'EMP009','35000',9,4,4),
+(10,'EMP010','34000',10,4,4),
+(11,'EMP011','30000',11,2,5),
+(12,'EMP012','39000',12,1,2);
+
+
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-50273', 20),
+(3, '2025-50273', 80),
+(2, '2025-50273', 40),
+(4, '2025-50273', 80),
+(5, '2025-50273', 650),
+(6, '2025-50273', 177),
+(7, '2025-50273', 83);
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-50413', 44),
+(3, '2025-50413', 0),
+(2, '2025-50413', 0),
+(4, '2025-50413', 64),
+(5, '2025-50413', 200),
+(6, '2025-50413', 141),
+(7, '2025-50413', 73);
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2026-40378', 40),
+(2, '2026-40378', 20);
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-38474', 32);
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-48567', 24);
+
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-50236', 20),
+(3, '2025-50236', 80),
+(2, '2025-50236', 40),
+(4, '2025-50236', 80),
+(5, '2025-50236', 650),
+(6, '2025-50236', 177), 
+(7, '2025-50236', 83);  
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-50229', 20),
+(3, '2025-50229', 80),
+(2, '2025-50229', 40),
+(4, '2025-50229', 80),
+(5, '2025-50229', 650),
+(6, '2025-50229', 145),  
+(7, '2025-50229', 74);   
+
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-50201', 20),
+(3, '2025-50201', 80),
+(2, '2025-50201', 40),
+(4, '2025-50201', 80),
+(5, '2025-50201', 650),
+(6, '2025-50201', 130), 
+(7, '2025-50201', 70);   
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-50442', 44),
+(3, '2025-50442', 0),
+(2, '2025-50442', 0),
+(4, '2025-50442', 64),
+(5, '2025-50442', 200),
+(6, '2025-50442', 122), 
+(7, '2025-50442', 68); 
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-50420', 44),
+(3, '2025-50420', 0),
+(2, '2025-50420', 0),
+(4, '2025-50420', 64),
+(5, '2025-50420', 200),
+(6, '2025-50420', 126), 
+(7, '2025-50420', 69);  
+
+INSERT INTO planned_activity (teaching_activity_id, course_instance_id, planned_hours) VALUES
+(1, '2025-50431', 44),
+(3, '2025-50431', 0),
+(2, '2025-50431', 0),
+(4, '2025-50431', 64),
+(5, '2025-50431', 200),
+(6, '2025-50431', 130), 
+(7, '2025-50431', 70);  
+
+
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-50273', 1),
+(3, '2025-50273', 2),
+(2, '2025-50273', 3),
+(4, '2025-50273', 4),
+(5, '2025-50273', 5),
+(6, '2025-50273', 6),
+(7, '2025-50273', 7);
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-50413', 8),
+(4, '2025-50413', 9),
+(5, '2025-50413', 10),
+(6, '2025-50413', 11),
+(7, '2025-50413', 12);
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2026-40378', 1),
+(2, '2026-40378', 2);
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-38474', 4);
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-48567', 6);
+
+
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-50236', 1),
+(3, '2025-50236', 2),
+(2, '2025-50236', 3),
+(4, '2025-50236', 4),
+(5, '2025-50236', 5),
+(6, '2025-50236', 6),
+(7, '2025-50236', 7);
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-50229', 8),
+(3, '2025-50229', 9),
+(2, '2025-50229', 10),
+(4, '2025-50229', 11),
+(5, '2025-50229', 12),
+(6, '2025-50229', 1),
+(7, '2025-50229', 2);
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-50201', 3),
+(3, '2025-50201', 5),
+(2, '2025-50201', 7),
+(4, '2025-50201', 9),
+(5, '2025-50201', 11),
+(6, '2025-50201', 12),
+(7, '2025-50201', 4);
+
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-50442', 2),
+(3, '2025-50442', 3),
+(2, '2025-50442', 5),
+(4, '2025-50442', 6),
+(5, '2025-50442', 7),
+(6, '2025-50442', 1),
+(7, '2025-50442', 4);
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-50420', 8),
+(3, '2025-50420', 9),
+(2, '2025-50420', 10),
+(4, '2025-50420', 11),
+(5, '2025-50420', 12),
+(6, '2025-50420', 1),
+(7, '2025-50420', 2);
+
+
+INSERT INTO planned_activity_employee (teaching_activity_id, course_instance_id, employee_id) VALUES
+(1, '2025-50431', 3),
+(3, '2025-50431', 4),
+(2, '2025-50431', 5),
+(4, '2025-50431', 6),
+(5, '2025-50431', 7),
+(6, '2025-50431', 8),
+(7, '2025-50431', 9);
+
+INSERT INTO skill (employee_id, skill_set) VALUES
+(1,'Data Storage; Databases; Systems'),
+(2,'Algorithms; Tutoring'),
+(3,'Electronics; Lab Safety'),
+(4,'Discrete Math; Proofs'),
+(5,'Teaching Support; Admin'),
+(6,'Exam Coordination'),
+(7,'Course Administration'),
+(8,'Lecturing; Research'),
+(9,'Seminar Facilitation'),
+(10,'Course Design'),
+(11,'Grading; Exam Setting'),
+(12,'Database Design; Data Modeling');
