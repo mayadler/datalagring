@@ -1,0 +1,42 @@
+WITH sem2 AS (
+
+SELECT cl.course_code, ci.course_instance_id, hp, job_title,
+first_name || ' ' || last_name AS teachers_name,
+SUM(CASE WHEN ta.teaching_activity_id = '1' THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS lecture,
+SUM(CASE WHEN ta.teaching_activity_id = '2' THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS lab,
+SUM(CASE WHEN ta.teaching_activity_id = '3' THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS tutorial,
+SUM(CASE WHEN ta.teaching_activity_id = '4' THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS seminar,
+SUM(CASE WHEN ta.teaching_activity_id NOT IN ('1','2','3','4','6','7') 
+             THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS other,
+SUM(CASE WHEN ta.teaching_activity_id = '6' THEN 32 + 0.725 * ci.num_students ELSE 0 END)AS examination,
+SUM(CASE WHEN ta.teaching_activity_id = '7' THEN 2 * cl.hp::numeric + 28 + (0.2* ci.num_students) ELSE 0 END) AS administration
+
+
+FROM course_layout AS cl, course_instance as ci, job_title AS jt, planned_activity AS pa, teaching_activity AS ta,
+person AS p, employee AS e, planned_activity_employee AS pae
+WHERE cl.course_code = ci.course_code AND
+	ci.course_instance_id= pa.course_instance_id AND
+	pa.teaching_activity_id= ta.teaching_activity_id AND
+	pa.teaching_activity_id= pae.teaching_activity_id AND
+	Pae.employee_id= e.employee_id AND
+	e.person_id= p.person_id AND
+e.job_title_id = jt.job_id AND 
+WHERE study_year = ‘2025’ AND
+course_instance_id= '2025-50273' 
+
+	
+
+
+GROUP BY 
+    cl.course_code,
+    ci.course_instance_id,
+    cl.hp,
+    jt.job_title,
+    p.first_name,
+    p.last_name
+
+
+)
+SELECT *,
+       lecture + lab + tutorial + seminar + other + examination + administration AS total
+FROM sem2;
