@@ -25,7 +25,7 @@ WHERE
 	  CL.course_code = CI.course_code AND
     CI.course_instance_id = PA.course_instance_id AND
     PA.teaching_activity_id = TA.teaching_activity_id AND
-    CI.study_year = '2025'
+    CI.course_instance_id LIKE '2025%'
 
 
 GROUP BY
