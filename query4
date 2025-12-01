@@ -18,4 +18,4 @@ ci.study_period,
 p.first_name,
 p.last_name
 
-HAVING COUNT(ci.course_instance_id) > 1;
+HAVING COUNT(ci.course_instance_id) > 0;
