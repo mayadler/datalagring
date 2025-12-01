@@ -1,0 +1,21 @@
+SELECT e.employee_id, ci.study_period,
+p.first_name || ' ' || p.last_name AS teachers_name,
+COUNT(ci.course_instance_id) AS no_of_courses
+
+FROM employee AS E, course_instance AS ci, person AS p, planned_activity_employee AS pae
+
+WHERE study_year = '2025'  AND 
+study_period = 'P1' AND
+p.person_id = e.person_id AND 
+pae.employee_id = e.employee_id AND 
+ci.course_instance_id = pae.course_instance_id
+
+
+
+GROUP BY
+e.employee_id,
+ci.study_period,
+p.first_name,
+p.last_name
+
+HAVING COUNT(ci.course_instance_id) > 1;
