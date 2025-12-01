@@ -12,10 +12,8 @@ SUM(CASE WHEN ta.teaching_activity_id = '4' THEN pa.planned_hours * ta.factor::n
 SUM(CASE WHEN ta.teaching_activity_id NOT IN ('1','2','3','4','6','7') 
              THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS other,
 SUM(CASE WHEN ta.teaching_activity_id = '6' THEN 32 + 0.725 * ci.num_students ELSE 0 END)AS examination,
-SUM(CASE WHEN ta.teaching_activity_id = '7' THEN 2 * cl.hp::numeric + 28 + (0.2* ci.num_students) ELSE 0 END) AS administration
-
-
-     SUM(PA.planned_hours * TA.factor::numeric) AS "Total Hours"
+SUM(CASE WHEN ta.teaching_activity_id = '7' THEN 2 * cl.hp::numeric + 28 + (0.2* ci.num_students) ELSE 0 END) AS administration,
+SUM(PA.planned_hours * TA.factor::numeric) AS "Total Hours"
 
 
 FROM
