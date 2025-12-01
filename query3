@@ -30,8 +30,8 @@ WHERE
     PAE.employee_id = E.employee_id AND
     E.person_id = P.person_id AND
   CI.study_year = '2025' AND 
-p.first_name = 'Niharika' AND
-p.last_name= 'Gauraha'
+p.first_name = 'Alice' AND
+p.last_name= 'Andersson'
 GROUP BY
     CL.course_code,
     CI.course_instance_id,
