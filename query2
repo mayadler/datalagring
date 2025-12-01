@@ -21,8 +21,8 @@ WHERE cl.course_code = ci.course_code AND
 	Pae.employee_id= e.employee_id AND
 	e.person_id= p.person_id AND
 e.job_title_id = jt.job_id AND 
-WHERE study_year = ‘2025’ AND
-course_instance_id= '2025-50273' 
+ study_year = '2025' AND
+ci.course_instance_id= '2025-50273' 
 
 	
 
