@@ -1,0 +1,38 @@
+SELECT
+    CL.course_code AS "Course Code",
+    CL.hp AS "HP",
+    CI.course_instance_id AS "Course Instance ID",
+    CI.study_period AS "Period",
+    CI.num_students AS "# Students",
+
+SUM(CASE WHEN ta.teaching_activity_id = '1' THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS lecture,
+SUM(CASE WHEN ta.teaching_activity_id = '2' THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS lab,
+SUM(CASE WHEN ta.teaching_activity_id = '3' THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS tutorial,
+SUM(CASE WHEN ta.teaching_activity_id = '4' THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS seminar,
+SUM(CASE WHEN ta.teaching_activity_id NOT IN ('1','2','3','4','6','7') 
+             THEN pa.planned_hours * ta.factor::numeric ELSE 0 END) AS other,
+SUM(CASE WHEN ta.teaching_activity_id = '6' THEN 32 + 0.725 * ci.num_students ELSE 0 END)AS examination,
+SUM(CASE WHEN ta.teaching_activity_id = '7' THEN 2 * cl.hp::numeric + 28 + (0.2* ci.num_students) ELSE 0 END) AS administration
+
+
+     SUM(PA.planned_hours * TA.factor::numeric) AS "Total Hours"
+
+
+FROM
+    course_layout CL, course_instance CI, planned_activity PA, teaching_activity TA
+
+
+
+WHERE
+	  CL.course_code = CI.course_code AND
+    CI.course_instance_id = PA.course_instance_id AND
+    PA.teaching_activity_id = TA.teaching_activity_id AND
+    CI.study_year = '2025'
+
+
+GROUP BY
+    CL.course_code,
+    CI.course_instance_id,
+    CL.hp,
+    CI.study_period,
+    CI.num_students;
